@@ -8,13 +8,14 @@ uint32_t cnt = 0;
 void setup() {
   Serial.begin(9600);  // start serial for output
 
-  Serial.println("Waiting to come online...");
+  Serial.println("Waiting to come online");
   for(;;){
     if( sakuraio.getNetworkStatus() == 1 ) break;
     delay(1000);
+    Serial.print(".");
   }
+  Serial.println("");
 }
-
 
 void loop() {
   cnt++;
