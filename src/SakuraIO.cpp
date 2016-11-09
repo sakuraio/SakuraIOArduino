@@ -4,7 +4,6 @@
 #include "SakuraIO/commands.h"
 #include "SakuraIO/debug.h"
 
-
 uint8_t SakuraIO::executeCommand(uint8_t cmd,uint8_t requestLength, uint8_t *request, uint8_t *responseLength, uint8_t *response)
 {
   uint8_t parity = 0x00;
@@ -123,7 +122,6 @@ uint16_t SakuraIO::getADC(uint8_t channel){
   return *((uint16_t *)response);
 }
 
-
 /* TX Commands */
 uint8_t SakuraIO::enqueueTxRaw(uint8_t ch, uint8_t type, uint8_t length, uint8_t *data, uint64_t offset){
   uint8_t request[18] = {0x00};
@@ -170,7 +168,6 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset){
   return enqueueTxRaw(ch, 'b', 8, (uint8_t *)value, offset);
 }
 
-
 uint8_t SakuraIO::enqueueTx(uint8_t ch, int32_t value){
   return enqueueTx(ch, value, (uint32_t)0);
 }
@@ -199,8 +196,6 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8]){
   return enqueueTx(ch, value, (uint32_t)0);
 }
 
-
-
 uint8_t SakuraIO::getTxQueueLength(uint8_t *available, uint8_t *queued){
   uint8_t response[2] = {0x00};
   uint8_t responseLength = 2;
@@ -216,6 +211,15 @@ uint8_t SakuraIO::clearTx(){
 
 uint8_t SakuraIO::send(){
   return executeCommand(CMD_TX_SEND, 0, NULL, NULL, NULL);
+}
+
+uint8_t getTxStatus(uint8_t *queue, uint8_t *immediate){
+  uint8_t response[2] = {0x00};
+  uint8_t responseLength = 2;
+  uint8_t ret = executeCommand(CMD_TX_STAT, 0, NULL, &responseLength, response);
+  *queue = response[0];
+  *immediate = response[1];
+  return ret;
 }
 
 /* RX Commands */

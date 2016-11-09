@@ -43,6 +43,7 @@ public:
   uint8_t enqueueTx(uint8_t ch, uint8_t value[8]);
   uint8_t getTxQueueLength(uint8_t *available, uint8_t *queued);
   uint8_t clearTx();
+  uint8_t getTxStatus(uint8_t *queue, uint8_t *immediate);
   uint8_t send();
   uint8_t dequeueRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t *offset);
   uint8_t peekRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t *offset);
