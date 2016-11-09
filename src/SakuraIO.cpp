@@ -213,7 +213,7 @@ uint8_t SakuraIO::send(){
   return executeCommand(CMD_TX_SEND, 0, NULL, NULL, NULL);
 }
 
-uint8_t getTxStatus(uint8_t *queue, uint8_t *immediate){
+uint8_t SakuraIO::getTxStatus(uint8_t *queue, uint8_t *immediate){
   uint8_t response[2] = {0x00};
   uint8_t responseLength = 2;
   uint8_t ret = executeCommand(CMD_TX_STAT, 0, NULL, &responseLength, response);
