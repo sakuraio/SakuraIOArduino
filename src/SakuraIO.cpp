@@ -78,7 +78,7 @@ uint8_t SakuraIO::getConnectionStatus(){
   uint8_t responseLength = 1;
   uint8_t response[1] = {0x00};
   if(executeCommand(CMD_GET_CONNECTION_STATUS, 0, NULL, &responseLength, response) != CMD_ERROR_NONE){
-    return 0xFF;
+    return 0x7F;
   }
   return response[0];
 }
