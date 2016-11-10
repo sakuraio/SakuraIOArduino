@@ -4,16 +4,17 @@
 SakuraIO_I2C sakuraio;
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
-  delay(1000);
-  Serial.println("Hello");
+  Serial.print("Waiting to come online");
+  for(;;){
+    if( (sakuraio.getConnectionStatus() & 0x80) == 0x80 ) break;
+    Serial.print(".");
+    delay(1000);
+  }
+  Serial.println("");
 }
 
-uint32_t c = 0;
-
 uint8_t counter = 0;
-
 
 void loop() {
   counter++;
@@ -124,7 +125,6 @@ void loop() {
       Serial.println(" ERROR");
     }
   }
-
 
   delay(1000);
 }
