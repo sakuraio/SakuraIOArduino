@@ -13,7 +13,7 @@
 
 class SakuraIOAlphaCompat {
 protected:
-  SakuraIO sakuraio;
+  SakuraIO *sakuraio;
 public:
   void writeChannel(uint8_t ch, int32_t data);
   void writeChannel(uint8_t ch, uint32_t data);
