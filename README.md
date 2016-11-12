@@ -41,7 +41,7 @@ uint32_t cnt;
 
 void setup(){
   cnt = 0;
-  while(sakuraio.getConnectionStatus() & 0x80) == 0x80){
+  while((sakuraio.getConnectionStatus() & 0x80) != 0x80){
     delay(1000);
   }
 }
