@@ -255,7 +255,7 @@ uint8_t SakuraIO::peekRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t *of
   *ch = response[0];
   *type = response[1];
   for(uint8_t i=0; i<8; i++){
-    value[0] = response[2+i];
+    value[i] = response[2+i];
   }
   for(uint8_t i=0; i<8; i++){
     ((uint8_t *)offset)[i] = response[10+i];
