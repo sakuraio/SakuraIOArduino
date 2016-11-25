@@ -25,7 +25,7 @@ with
 
 # Reference
 
-Please see the [datasheet](https://iot.sakura.ad.jp/developer/pdf/sakura_module_datasheet_1.0.0.pdf).
+Please see the [datasheet](https://iot.sakura.ad.jp/developer/pdf/sakura_module_datasheet_1.0.2.pdf).
 
 
 ## Example
