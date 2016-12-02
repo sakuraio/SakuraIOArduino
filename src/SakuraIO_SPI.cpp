@@ -17,7 +17,7 @@ void SakuraIO_SPI::end(){
 void SakuraIO_SPI::sendByte(uint8_t data){
   delayMicroseconds(20);
   dbg("Send=");
-  dbgln(data);
+  dbgln(data, HEX);
   SPI.transfer(data);
 }
 
@@ -31,7 +31,7 @@ uint8_t SakuraIO_SPI::receiveByte(){
   delayMicroseconds(20);
   ret = SPI.transfer(0x00);
   dbg("Recv=");
-  dbgln(ret);
+  dbgln(ret, HEX);
   return ret;
 }
 

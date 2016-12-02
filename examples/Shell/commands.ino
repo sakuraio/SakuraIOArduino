@@ -40,7 +40,26 @@ void cmd_sqi(int argc, char **argv){
 
 void cmd_unixtime(int argc, char **argv){
   uint64_t ret = sakuraio.getUnixtime();
-  Serial.println((uint32_t)ret);
+
+  if(ret > 9999999999999999L){
+    Serial.println("Invalid");
+    return;
+  }
+
+  char buf[16] = {0};
+  int8_t s;
+  for(s=0; s<sizeof(buf); s++){
+    buf[s] = (ret % 10) + '0';
+    ret /= 10;
+    if(ret == 0){
+      break;
+    }
+  }
+
+  for(; s>=0; s--){
+    Serial.print(buf[s]);
+  }
+  Serial.print('\n');
 }
 
 

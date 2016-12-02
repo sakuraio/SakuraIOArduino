@@ -34,7 +34,7 @@ void SakuraIO_I2C::sendByte(uint8_t data){
     mode = MODE_WRITE;
   }
   dbg("Write=");
-  dbgln(data);
+  dbgln(data, HEX);
   Wire.write(data);
 }
 
@@ -59,7 +59,7 @@ uint8_t SakuraIO_I2C::receiveByte(bool stop){
     mode = MODE_IDLE;
   }
   dbg("Read=");
-  dbgln(ret);
+  dbgln(ret, HEX);
   return ret;
 }
 
