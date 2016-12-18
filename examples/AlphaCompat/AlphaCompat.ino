@@ -35,5 +35,5 @@ void loop() {
   Serial.println("");
 
   sakuraio.transmit(TRANSMIT_ONCE);
-  delay(1000);
+  delay(5000);
 }

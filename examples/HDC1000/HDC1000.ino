@@ -51,7 +51,7 @@ void loop() {
     Serial.println("[ERR] enqueue error");
   }
   sakuraio.send();
-  delay(1000);
+  delay(5000);
 
   uint8_t available;
   uint8_t queued;
