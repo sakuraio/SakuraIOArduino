@@ -126,6 +126,7 @@ Please see example code.
 * [Standard](./examples/Standard/Standard.ino)
 * [Firmware update](./examples/FirmwareUpdate/FirmwareUpdate.ino)
 * [Send temperature and humidity](./examples/HDC1000/HDC1000.ino) (depends on [hotchpotch/Arduino-HDC1000](https://github.com/hotchpotch/Arduino-HDC1000))
+* [6-Axis](./examples/GY-521/GY-521.ino)
 * [Send human presence](./examples/SB412A/SB412A.ino)
 * [Shell](./examples/Shell/Shell.ino)
 * [Compatiblity of Sakura IoT Alpha](./examples/AlphaCompat/AlphaCompat.ino) (deprecated and send only)
