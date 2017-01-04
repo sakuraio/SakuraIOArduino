@@ -66,10 +66,10 @@ void loop() {
   Serial.print("Status ");
   Serial.println(connectionStatus);
 
-  //getSignalQuarity
-  uint8_t signalQuarity = sakuraio.getSignalQuarity();
+  //getSignalQuality
+  uint8_t signalQuality = sakuraio.getSignalQuality();
   Serial.print("Quality ");
-  Serial.println(signalQuarity);
+  Serial.println(signalQuality);
 
 
   // Tx Queue

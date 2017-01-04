@@ -75,7 +75,7 @@ void loop() {
 ```cpp
 // Common
 uint8_t getConnectionStatus();
-uint8_t getSignalQuarity();
+uint8_t getSignalQuality();
 uint64_t getUnixtime();
 uint8_t echoback(uint8_t length, uint8_t *data, uint8_t *response);
 
