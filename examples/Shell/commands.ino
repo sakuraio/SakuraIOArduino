@@ -34,7 +34,7 @@ void cmd_status(int argc, char **argv){
 }
 
 void cmd_sqi(int argc, char **argv){
-  uint8_t ret = sakuraio.getSignalQuarity();
+  uint8_t ret = sakuraio.getSignalQuality();
   Serial.println(ret);
 }
 

@@ -83,7 +83,7 @@ uint8_t SakuraIO::getConnectionStatus(){
   return response[0];
 }
 
-uint8_t SakuraIO::getSignalQuarity(){
+uint8_t SakuraIO::getSignalQuality(){
   uint8_t responseLength = 1;
   uint8_t response[1] = {0x00};
 
@@ -91,6 +91,11 @@ uint8_t SakuraIO::getSignalQuarity(){
     return 0x00;
   }
   return response[0];
+}
+
+uint8_t SakuraIO::getSignalQuarity(){
+  // deplicated
+  return getSignalQuality();
 }
 
 uint64_t SakuraIO::getUnixtime(){
