@@ -23,7 +23,7 @@ protected:
 
 public:
   uint8_t getConnectionStatus();
-  uint8_t getSignalQuarity(); // Deplicated
+  uint8_t getSignalQuarity(); // Deprecated
   uint8_t getSignalQuality();
   uint64_t getUnixtime();
   uint8_t echoback(uint8_t length, uint8_t *data, uint8_t *response);
