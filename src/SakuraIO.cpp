@@ -94,7 +94,7 @@ uint8_t SakuraIO::getSignalQuality(){
 }
 
 uint8_t SakuraIO::getSignalQuarity(){
-  // deplicated
+  // deprecated
   return getSignalQuality();
 }
 
