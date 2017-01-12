@@ -8,7 +8,7 @@ uint8_t SakuraIO::executeCommand(uint8_t cmd,uint8_t requestLength, uint8_t *req
 {
   uint8_t parity = 0x00;
   uint8_t result = 0x00;
-  uint8_t tmpResponseLength, tmpResponse;
+  uint8_t reservedResponseLength, tmpResponse, receivedResponseLength;
 
   dbgln("executeCommand");
 
@@ -25,33 +25,31 @@ uint8_t SakuraIO::executeCommand(uint8_t cmd,uint8_t requestLength, uint8_t *req
   this->sendByte(parity);
   //this->finishSending();
 
-  tmpResponseLength = 0;
+  reservedResponseLength = 0;
   if(responseLength != NULL){
-    tmpResponseLength = *responseLength;
+    reservedResponseLength = *responseLength;
   }
 
   delay(10);
 
   // response
-  this->startReceive(tmpResponseLength+3);
+  this->startReceive(reservedResponseLength+3);
   result = this->receiveByte();
   if(result != CMD_ERROR_NONE){
     dbgln("Invalid status");
     this->end();
     return result;
   }
-  tmpResponseLength = this->receiveByte();
-  parity = result ^ tmpResponseLength;
+  receivedResponseLength = this->receiveByte();
   if(responseLength != NULL){
-    if(*responseLength < tmpResponseLength){
-      tmpResponseLength = *responseLength;
-    }
-    *responseLength = tmpResponseLength;
+    *responseLength = receivedResponseLength;
   }
-  for(int16_t i=0; i<tmpResponseLength; i++){
+
+  parity = result ^ receivedResponseLength;
+  for(int16_t i=0; i<receivedResponseLength; i++){
     tmpResponse = this->receiveByte();
     parity ^= tmpResponse;
-    if(response != NULL){
+    if(response != NULL && i<reservedResponseLength){
       response[i] = tmpResponse;
     }
   }
