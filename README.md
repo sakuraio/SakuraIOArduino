@@ -16,6 +16,17 @@ with
 
 # Install
 
+## Using the Library Manager (Recommended)
+
+* Open the IDE and click to the `Sketch` menu and then `Include Library` > `Manage Libraries`.
+* Input `sakuraio` in search box.
+* Click on `Install` and wait for the IDE to install the new library.
+
+![Library Manager](docs/librarymanager.png)
+
+
+## Manual Install
+
 * Download ZIP from [here](https://github.com/sakura-internet/SakuraIOArduino/archive/master.zip).
 * Place the ZIP file in Arduino `libraries` directory.
   * Mac `~/Documents/Arduino/libraries`
