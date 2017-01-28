@@ -171,6 +171,17 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset){
   return enqueueTxRaw(ch, 'b', 8, (uint8_t *)value, offset);
 }
 
+uint8_t SakuraIO::enqueueTx(uint8_t length, ChData *data, uint64_t offset){
+  uint8_t requestLength = 10*length;
+  if( offset )
+  	requestLength += 8;
+  uint8_t request[requestLength];
+  memcpy(request, data, 10*length);
+  if( offset )
+  	  memcpy(request+10*length, &offset, 8);
+  return executeCommand(CMD_TX_ENQUEUE, requestLength, request, NULL, NULL);
+}
+
 uint8_t SakuraIO::getTxQueueLength(uint8_t *available, uint8_t *queued){
   uint8_t response[2] = {0x00};
   uint8_t responseLength = 2;

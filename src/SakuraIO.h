@@ -21,6 +21,12 @@ protected:
   uint8_t enqueueTxRaw(uint8_t ch, uint8_t type, uint8_t length, uint8_t *data, uint64_t offset);
 
 public:
+  struct ChData { 
+    uint8_t ch;
+    uint8_t type;
+    uint8_t value[8];
+  };
+  
   uint8_t getConnectionStatus();
   uint8_t getSignalQuarity(); // Deprecated
   uint8_t getSignalQuality();
@@ -34,6 +40,7 @@ public:
   uint8_t enqueueTx(uint8_t ch, float value, uint64_t offset=0);
   uint8_t enqueueTx(uint8_t ch, double value, uint64_t offset=0);
   uint8_t enqueueTx(uint8_t ch, uint8_t value[8], uint64_t offset=0);
+  uint8_t enqueueTx(uint8_t length, ChData *data, uint64_t offset=0);
   uint8_t getTxQueueLength(uint8_t *available, uint8_t *queued);
   uint8_t clearTx();
   uint8_t getTxStatus(uint8_t *queue, uint8_t *immediate);
