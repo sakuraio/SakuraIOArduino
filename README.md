@@ -1,18 +1,21 @@
-# SAKURA Internet IoT Communication Module Library for Arduino
+# Sakura Communication Module for sakura.io Library for Arduino
 
 **Under development**
 
-[Sakura Communication Module](https://iot.sakura.ad.jp/product/) (with [Sakura IoT Platform β](https://iot.sakura.ad.jp/)) library for Arduino.
+[Sakura Communication Module](https://iot.sakura.ad.jp/product/) (with [sakura.io](https://sakura.io/)) library for Arduino.
+
+[sakura.io](https://sakura.io/) is the IoT platform of SAKURA intenret Inc.
 
 # Support
 
 This library supports following products.
 
-* [SCM-LTE-Beta (Sakura Communication Module (LTE) β)](http://iot-store.sakura.ad.jp/items/4326125)
+* [SCM-LTE-Beta (Sakura Communication Module (LTE) β)](https://www.amazon.co.jp/dp/B06XWZDSQV)
+* SCM-LTE-01 (Sakura Communication Module (LTE))
 
 with
 
-* [SCO-ARD-01 (Arduino Shield for SCM)](http://iot-store.sakura.ad.jp/items/4350904)
+* [SCO-ARD-01 (Arduino Shield for SCM)](http://iot-store.sakura.ad.jp/items/6091056)
 
 # Install
 

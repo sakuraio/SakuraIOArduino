@@ -50,6 +50,10 @@ public:
   uint8_t peekRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t *offset);
   uint8_t getRxQueueLength(uint8_t *available, uint8_t *queued);
   uint8_t clearRx();
+  uint8_t startFileDownload(uint16_t fileId);
+  uint8_t getFileMetaData(uint8_t *status, uint32_t *totalSize, uint64_t *timestamp, uint32_t *crc);
+  uint8_t getFileDownloadStatus(uint8_t *status, uint32_t *currentSize);
+  uint8_t getFileData(uint8_t *size, uint8_t *data);
   uint16_t getProductID();
   uint8_t getUniqueID(char *data);
   uint8_t getFirmwareVersion(char *data);
