@@ -27,6 +27,9 @@ uint8_t updateFirmware(){
     case 0x0001:
       Serial.println("SCM-LTE-Beta");
       break;
+    case 0x0002:
+      Serial.println("SCM-LTE-01");
+      break;
     default:
       Serial.println("Please check connection");
       return 1;
