@@ -1,4 +1,4 @@
-# Sakura Communication Module for sakura.io Library for Arduino
+# Sakura Communication Module for sakura.io Library for Arduino ![travis-ci](https://travis-ci.org/sakura-internet/SakuraIOArduino.svg?branch=master)
 
 **Under development**
 
