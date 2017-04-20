@@ -285,6 +285,10 @@ uint8_t SakuraIO::startFileDownload(uint16_t fileId){
   return executeCommand(CMD_START_FILE_DOWNLOAD, 2, (uint8_t *)&fileId, NULL, NULL);
 }
 
+uint8_t SakuraIO::cancelFileDownload(){
+  return executeCommand(CMD_CANCEL_FILE_DOWNLOAD, 0, NULL, NULL, NULL);
+}
+
 uint8_t SakuraIO::getFileMetaData(uint8_t *status, uint32_t *totalSize, uint64_t *timestamp, uint32_t *crc){
   uint8_t response[17] = {0x00};
   uint8_t responseLength = 17;
@@ -308,10 +312,6 @@ uint8_t SakuraIO::getFileDownloadStatus(uint8_t *status, uint32_t *currentSize){
 uint8_t SakuraIO::getFileData(uint8_t *size, uint8_t *data){
   return executeCommand(CMD_GET_FILE_DATA, 1, size, size, data);
 }
-
-
-
-
 
 /* Operation command */
 
