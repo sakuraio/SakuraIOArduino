@@ -1,3 +1,5 @@
+#define CHUNK_SIZE (16)
+
 void cmd_version(int argc, char **argv){
   char version[33];
   uint8_t ret;
@@ -301,4 +303,90 @@ void cmd_peek(int argc, char **argv){
   }
 
   printChannel(channel, type, value, offset);
+}
+
+void cmd_file(int argc, char **argv){
+  // number
+  if(argc != 2){
+    Serial.println("Invalid arguments");
+    return;
+  }
+
+  uint8_t number = (uint8_t)atoi(argv[1]);
+  uint8_t ret;
+
+  sakuraio.cancelFileDownload();
+  ret = sakuraio.startFileDownload(number);
+  if(ret != CMD_ERROR_NONE){
+    printError(ret);
+    return;
+  }
+
+  // Get Metadata
+  ret = 0;
+
+  uint8_t file_status;
+  uint32_t file_size, crc;
+  uint64_t timestamp;
+  uint8_t errCounter = 0;
+  while(1){
+    ret = sakuraio.getFileMetaData(&file_status, &file_size, &timestamp, &crc);
+
+    if(ret != CMD_ERROR_NONE){
+      if(errCounter++ > 10){
+        Serial.println("Timeout");
+        return;
+      }
+      delay(500);
+      continue;
+    }
+
+    if(file_status != 0x00){
+      printFileError(file_status);
+      return;
+    }
+
+    Serial.println("Metadata");
+    Serial.print("  File Status: ");
+    Serial.println(file_status);
+    Serial.print("   Total Size: ");
+    Serial.println(file_size);
+    Serial.print("    Timestamp: ");
+    Serial.println((uint32_t)(timestamp / 1000));
+    Serial.print("        CRC32: ");
+    Serial.println(crc);
+    break;
+  }
+
+  Serial.println("Content");
+
+  // Get Chunk
+  uint32_t received_size = 0;
+  while (received_size < file_size)
+  {
+    uint32_t size = 0;
+    uint8_t status = CHUNK_SIZE;
+    uint8_t buf[CHUNK_SIZE] = {0};
+    uint8_t len = CHUNK_SIZE;
+
+    // Get file download status
+    ret = sakuraio.getFileDownloadStatus(&status, &size);
+    if (ret != CMD_ERROR_NONE)
+    {
+      printError(ret);
+      return;
+    }
+
+    // Get chunk
+    ret = sakuraio.getFileData(&len, buf);
+    if (ret != CMD_ERROR_NONE)
+    {
+      printError(ret);
+      return;
+    }
+
+    // Chunk dump
+    Serial.write(buf, len);
+    received_size += len;
+  }
 }

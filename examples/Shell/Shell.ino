@@ -25,6 +25,7 @@ cmd_list_t cmd_list[] = {
   {(char*)"dequeue", cmd_dequeue},
   {(char*)"peek", cmd_peek},
   {(char*)"clearrx", cmd_clearrx},
+  {(char*)"file", cmd_file},
   {NULL, NULL}
 };
 
