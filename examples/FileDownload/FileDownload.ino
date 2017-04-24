@@ -68,6 +68,25 @@ void loop()
     delay(500);
   } while (result != CMD_ERROR_NONE);
 
+  // Handle server side error
+  if (file_status & 0x80 == 0x80)
+  {
+    Serial.print("Server side error:");
+    if (file_status == FILE_META_STATE_NOT_FOUND)
+    {
+      Serial.println("File not found.");
+    } else if (file_status == FILE_META_STATE_SERVER_ERROR)
+    {
+      Serial.println("Server error.");
+    } else if (file_status == FILE_META_STATE_INVALID_DATA)
+    {
+      Serial.println("Invalid data.");
+    } else
+    {
+      Serial.println("Unknown error.");
+    }
+  }
+
   delay(500);
 
   // Get file body
