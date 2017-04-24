@@ -96,14 +96,14 @@ void cmd_update(int argc, char **argv){
 
   // Request unlock
   Serial.println("Unlock");
-  if(ret != CMD_ERROR_NONE){
+  if((ret = sakuraio.unlock()) != CMD_ERROR_NONE){
     printError(ret);
     return;
   }
 
   // Request firmware update
   Serial.println("Starting update");
-  if(ret != CMD_ERROR_NONE){
+  if((ret = sakuraio.updateFirmware()) != CMD_ERROR_NONE){
     printError(ret);
     return;
   }
