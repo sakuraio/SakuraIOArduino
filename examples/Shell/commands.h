@@ -21,3 +21,4 @@ void cmd_cleartx(int argc, char **argv);
 void cmd_clearrx(int argc, char **argv);
 void cmd_dequeue(int argc, char **argv);
 void cmd_peek(int argc, char **argv);
+void cmd_file(int argc, char **argv);

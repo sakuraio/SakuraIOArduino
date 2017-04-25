@@ -1,3 +1,29 @@
+const char errorMessage_error_code[] PROGMEM  = {"Error code "};
+
+const char errorMessage_parity[] PROGMEM  = {"Parity missmached"};
+const char errorMessage_missing[] PROGMEM  = {"Missing command"};
+const char errorMessage_invalid_syntax[] PROGMEM  = {"Invalid syntax"};
+const char errorMessage_runtime[] PROGMEM  = {"Runtime error"};
+const char errorMessage_locked[] PROGMEM  = {"Locked"};
+const char errorMessage_busy[] PROGMEM  = {"Busy"};
+
+const char fileErrorMessage_msg[] PROGMEM  = {"[file error] "};
+const char fileErrorMessage_error[] PROGMEM  = {"Download error"};
+const char fileErrorMessage_invalid_request[] PROGMEM  = {"Invalid request"};
+const char fileErrorMessage_notfound[] PROGMEM  = {"Not found"};
+const char fileErrorMessage_server_error[] PROGMEM  = {"Server error"};
+const char fileErrorMessage_invalid_data[] PROGMEM  = {"Invalid data from server"};
+
+
+static void printConstString(const char msg[]){
+  int len = strlen_P(msg);
+  for (uint16_t k = 0; k < len; k++)
+  {
+    char c =  pgm_read_byte_near(msg + k);
+    Serial.print(c);
+  }
+}
+
 void printChannel(uint8_t channel, uint8_t type, uint8_t value[8], int64_t offset){
   Serial.print("Offset: ");
   Serial.println((int32_t)(offset/1000));
@@ -46,25 +72,53 @@ void printError(uint8_t status){
     case CMD_ERROR_NONE:
       break;
     case CMD_ERROR_PARITY:
-      Serial.println("Parity missmached");
+      printConstString(errorMessage_parity);Serial.println();
       break;
     case CMD_ERROR_MISSING:
-      Serial.println("Missing command");
+      printConstString(errorMessage_missing);Serial.println();
       break;
     case CMD_ERROR_INVALID_SYNTAX:
-      Serial.println("Invalid syntax");
+      printConstString(errorMessage_invalid_syntax);Serial.println();
       break;
     case CMD_ERROR_RUNTIME:
-      Serial.println("Runtime error");
+      printConstString(errorMessage_runtime);Serial.println();
       break;
     case CMD_ERROR_LOCKED:
-      Serial.println("Locked");
+      printConstString(errorMessage_locked);Serial.println();
       break;
     case CMD_ERROR_BUSY:
-      Serial.println("Busy");
+      printConstString(errorMessage_busy);Serial.println();
       break;
     default:
-      Serial.print("Error code ");
+      printConstString(errorMessage_error_code);
+      Serial.println(status);
+      break;
+  }
+}
+
+void printFileError(uint8_t status){
+  if (status == 0x00) {
+    return;
+  }
+  printConstString(fileErrorMessage_msg);
+  switch(status){
+    case FILE_STATUS_ERROR:
+      printConstString(fileErrorMessage_error); Serial.println();
+      break;
+    case FILE_STATUS_INVALID_REQUEST:
+      printConstString(fileErrorMessage_invalid_request); Serial.println();
+      break;
+    case FILE_STATUS_NOTFOUND:
+      printConstString(fileErrorMessage_notfound); Serial.println();
+      break;
+    case FILE_STATUS_SERVER_ERROR:
+      printConstString(fileErrorMessage_server_error); Serial.println();
+      break;
+    case FILE_STATUS_INVALID_DATA:
+      printConstString(fileErrorMessage_invalid_data); Serial.println();
+      break;
+    default:
+      printConstString(errorMessage_error_code);
       Serial.println(status);
       break;
   }

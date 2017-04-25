@@ -46,3 +46,11 @@
 #define CMD_ERROR_RUNTIME          0x05
 #define CMD_ERROR_LOCKED           0x06
 #define CMD_ERROR_BUSY             0x07
+
+
+// FileStatus
+#define FILE_STATUS_ERROR 0x01
+#define FILE_STATUS_INVALID_REQUEST 0x02
+#define FILE_STATUS_NOTFOUND 0x81
+#define FILE_STATUS_SERVER_ERROR 0x82
+#define FILE_STATUS_INVALID_DATA 0x83
