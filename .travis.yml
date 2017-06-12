@@ -12,7 +12,6 @@ install:
   - arduino --install-library "HDC1000"
   - arduino --install-library "SparkFun BME280"
 script:
-  - arduino --verify --board arduino:avr:uno $PWD/examples/AlphaCompat/AlphaCompat.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/FileDownload/FileDownload.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/FirmwareUpdate/FirmwareUpdate.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/GY-521/GY-521.ino
