@@ -1,4 +1,7 @@
+// This example requires SparkFun's BME280 library.
+// https://github.com/sparkfun/SparkFun_BME280_Arduino_Library
 #include "SparkFunBME280.h"
+
 #include "Wire.h"
 #include <SakuraIO.h>
 
@@ -93,3 +96,4 @@ void loop() {
   Serial.println(queued);
 
 }
+
