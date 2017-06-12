@@ -31,7 +31,7 @@ SakuraIO_I2C sakuraio;
 #define CH_GYRO_Z  6
 #define SEND_INTERVAL 500 // ms
 
-typedef union accel_t_gyro_union {
+typedef union {
     struct {
         uint8_t x_accel_h;
         uint8_t x_accel_l;
@@ -59,7 +59,7 @@ typedef union accel_t_gyro_union {
         int16_t z_gyro;
     }
             value;
-};
+} accel_t_gyro_union;
 
 void setup() {
     Wire.begin();
