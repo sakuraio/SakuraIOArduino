@@ -15,6 +15,7 @@ void cmd_unixtime(int argc, char **argv);
 void cmd_reset(int argc, char **argv);
 void cmd_update(int argc, char **argv);
 void cmd_enqueue(int argc, char **argv);
+void cmd_sendnow(int argc, char **argv);
 void cmd_send(int argc, char **argv);
 void cmd_size(int argc, char **argv);
 void cmd_cleartx(int argc, char **argv);
