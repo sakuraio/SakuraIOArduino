@@ -199,7 +199,7 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, uint8_t value[8]){
   return enqueueTx(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySendRaw(uint8_t ch, uint8_t type, uint8_t length, uint8_t *data, uint64_t offset){
+uint8_t SakuraIO::sendImmediatelyRaw(uint8_t ch, uint8_t type, uint8_t length, uint8_t *data, uint64_t offset){
   uint8_t request[18] = {0x00};
   uint8_t requestLength = 10;
   request[0] = ch;
@@ -216,60 +216,60 @@ uint8_t SakuraIO::immediatelySendRaw(uint8_t ch, uint8_t type, uint8_t length, u
   return executeCommand(CMD_TX_SENDIMMED, requestLength, request, NULL, NULL);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, int32_t value, uint64_t offset){
-  return immediatelySendRaw(ch, 'i', 4, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, int32_t value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'i', 4, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint32_t value, uint64_t offset){
-  return immediatelySendRaw(ch, 'I', 4, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint32_t value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'I', 4, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, int64_t value, uint64_t offset){
-  return immediatelySendRaw(ch, 'l', 8, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, int64_t value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'l', 8, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint64_t value, uint64_t offset){
-  return immediatelySendRaw(ch, 'L', 8, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint64_t value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'L', 8, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, float value, uint64_t offset){
-  return immediatelySendRaw(ch, 'f', 4, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, float value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'f', 4, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, double value, uint64_t offset){
-  return immediatelySendRaw(ch, 'd', 8, (uint8_t *)&value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, double value, uint64_t offset){
+  return sendImmediatelyRaw(ch, 'd', 8, (uint8_t *)&value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint8_t value[8], uint64_t offset){
-  return immediatelySendRaw(ch, 'b', 8, (uint8_t *)value, offset);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint8_t value[8], uint64_t offset){
+  return sendImmediatelyRaw(ch, 'b', 8, (uint8_t *)value, offset);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, int32_t value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, int32_t value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint32_t value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint32_t value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, int64_t value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, int64_t value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint64_t value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint64_t value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, float value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, float value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, double value){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, double value){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
-uint8_t SakuraIO::immediatelySend(uint8_t ch, uint8_t value[8]){
-  return immediatelySend(ch, value, (uint32_t)0);
+uint8_t SakuraIO::sendImmediately(uint8_t ch, uint8_t value[8]){
+  return sendImmediately(ch, value, (uint32_t)0);
 }
 
 

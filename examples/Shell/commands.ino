@@ -223,19 +223,19 @@ void cmd_sendnow(int argc, char **argv){
   switch(type){
     case 'i':
       v_int32 = (int32_t)value;
-      ret = sakuraio.immediatelySend(channel, v_int32);
+      ret = sakuraio.sendImmediately(channel, v_int32);
       break;
     case 'I':
       v_uint32 = (int32_t)value;
-      ret = sakuraio.immediatelySend(channel, v_uint32);
+      ret = sakuraio.sendImmediately(channel, v_uint32);
       break;
     case 'l':
       v_int64 = (int64_t)value;
-      ret = sakuraio.immediatelySend(channel, v_int64);
+      ret = sakuraio.sendImmediately(channel, v_int64);
       break;
     case 'L':
       v_uint64 = (uint64_t)value;
-      ret = sakuraio.immediatelySend(channel, v_uint64);
+      ret = sakuraio.sendImmediately(channel, v_uint64);
       break;
     case 'b':
       Serial.println("Type 'b' is not implemented");
