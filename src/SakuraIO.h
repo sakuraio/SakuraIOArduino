@@ -27,7 +27,7 @@ public:
   uint8_t getSignalQuality();
   uint64_t getUnixtime();
   uint8_t echoback(uint8_t length, uint8_t *data, uint8_t *response);
-  uint16_t getADC(uint8_t channel);
+  uint16_t getADC(uint8_t channel); // Deprecated
   uint8_t enqueueTx(uint8_t ch, int32_t value, uint64_t offset);
   uint8_t enqueueTx(uint8_t ch, uint32_t value, uint64_t offset);
   uint8_t enqueueTx(uint8_t ch, int64_t value, uint64_t offset);
