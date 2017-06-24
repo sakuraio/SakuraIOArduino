@@ -2,7 +2,7 @@
 
 **Under development**
 
-[Sakura Communication Module](https://iot.sakura.ad.jp/product/) (with [sakura.io](https://sakura.io/)) library for Arduino.
+[Sakura Communication Module](https://sakura.io/product/) (with [sakura.io](https://sakura.io/)) library for Arduino.
 
 [sakura.io](https://sakura.io/) is the IoT platform of SAKURA intenret Inc.
 
@@ -10,12 +10,12 @@
 
 This library supports following products.
 
-* [SCM-LTE-Beta (Sakura Communication Module (LTE) β)](https://www.amazon.co.jp/dp/B06XWZDSQV)
-* SCM-LTE-01 (Sakura Communication Module (LTE))
+* SCM-LTE-Beta (Sakura Communication Module (LTE) β)
+* [SCM-LTE-01 (Sakura Communication Module (LTE))](https://sakura.io/product/module_lte.html)
 
 with
 
-* [SCO-ARD-01 (Arduino Shield for SCM)](http://iot-store.sakura.ad.jp/items/6091056)
+* [SCO-ARD-01 (Arduino Shield for SCM)](https://sakura.io/product/arduino.html)
 
 # Install
 
@@ -30,7 +30,7 @@ with
 
 ## Manual Install
 
-* Download ZIP from [here](https://github.com/sakura-internet/SakuraIOArduino/archive/master.zip).
+* Download ZIP from [here](https://github.com/sakuraio/SakuraIOArduino/archive/master.zip).
 * Place the ZIP file in Arduino `libraries` directory.
   * Mac `~/Documents/Arduino/libraries`
   * Linux The `libraries` folder in your sketchbook
@@ -39,7 +39,7 @@ with
 
 # Reference
 
-Please see the [datasheet](https://iot.sakura.ad.jp/developer/pdf/sakura_module_datasheet_latest.pdf).
+Please see the [datasheet](https://sakura.io/developer/pdf/sakura_module_datasheet_latest.pdf).
 
 
 ## Example
@@ -168,6 +168,7 @@ Please see example code.
 
 
 # License
+
 The MIT License (MIT)
 
 Copyright (c) SAKURA Internet Inc.
