@@ -37,15 +37,6 @@ void loop() {
   Serial.print("Unixtime ");
   Serial.println(unixtime);
 
-  // ADC
-  uint16_t adc;
-  adc = sakuraio.getADC(0);
-  Serial.print("ADC0 ");
-  Serial.println(adc);
-  adc = sakuraio.getADC(1);
-  Serial.print("ADC1 ");
-  Serial.println(adc);
-
   // ProductID
   uint16_t pid = sakuraio.getProductID();
   Serial.print("PID ");
