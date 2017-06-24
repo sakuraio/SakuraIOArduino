@@ -203,6 +203,51 @@ void cmd_enqueue(int argc, char **argv){
   }
 }
 
+void cmd_sendnow(int argc, char **argv){
+  // ch, type, value
+  if(argc != 4){
+    Serial.println("Invalid arguments");
+    return;
+  }
+
+  uint8_t channel = (uint8_t)atoi(argv[1]);
+  char type = argv[2][0];
+  int64_t value = atoi(argv[3]);
+  uint8_t ret;
+
+  int32_t v_int32;
+  uint32_t v_uint32;
+  int64_t v_int64;
+  uint64_t v_uint64;
+
+  switch(type){
+    case 'i':
+      v_int32 = (int32_t)value;
+      ret = sakuraio.sendImmediately(channel, v_int32);
+      break;
+    case 'I':
+      v_uint32 = (int32_t)value;
+      ret = sakuraio.sendImmediately(channel, v_uint32);
+      break;
+    case 'l':
+      v_int64 = (int64_t)value;
+      ret = sakuraio.sendImmediately(channel, v_int64);
+      break;
+    case 'L':
+      v_uint64 = (uint64_t)value;
+      ret = sakuraio.sendImmediately(channel, v_uint64);
+      break;
+    case 'b':
+      Serial.println("Type 'b' is not implemented");
+      return;
+    default:
+      Serial.print("Invalid type: ");
+      Serial.println(argv[2]);
+      return;
+      break;
+  }
+}
+
 
 void cmd_send(int argc, char **argv){
   uint8_t ret = sakuraio.send();

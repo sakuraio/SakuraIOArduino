@@ -19,6 +19,7 @@ cmd_list_t cmd_list[] = {
   {(char*)"update", cmd_update},
   {(char*)"reset", cmd_reset},
   {(char*)"enqueue", cmd_enqueue},
+  {(char*)"sendnow", cmd_sendnow},
   {(char*)"send", cmd_send},
   {(char*)"size", cmd_size},
   {(char*)"cleartx", cmd_cleartx},
