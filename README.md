@@ -164,6 +164,7 @@ Please see example code.
 * [6-Axis](./examples/GY-521/GY-521.ino)
 * [Send human presence](./examples/SB412A/SB412A.ino)
 * [Shell](./examples/Shell/Shell.ino)
+* [Send illminance (CdS)](./examples/CdS/CDS.ino)
 
 
 
