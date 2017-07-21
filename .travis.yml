@@ -22,6 +22,7 @@ script:
   - arduino --verify --board arduino:avr:uno $PWD/examples/SB412A/SB412A.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/Shell/Shell.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/Standard/Standard.ino
+  - arduino --verify --board arduino:avr:uno $PWD/examples/CdS/CdS.ino
 notifications:
   email:
     on_success: change
