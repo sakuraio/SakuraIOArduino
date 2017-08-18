@@ -42,6 +42,7 @@ void SakuraIO_I2C::sendByte(uint8_t data){
 uint8_t SakuraIO_I2C::startReceive(uint8_t length){
   dbgln("endTransmission");
   Wire.endTransmission();
+  delayMicroseconds(2000);
   dbg("requestForm=");
   dbgln(length);
   Wire.requestFrom((uint8_t)SAKURAIO_SLAVE_ADDR, length, (uint8_t)true);
