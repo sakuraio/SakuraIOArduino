@@ -12,6 +12,7 @@ This library supports following products.
 
 * SCM-LTE-Beta (Sakura Communication Module (LTE) β)
 * [SCM-LTE-01 (Sakura Communication Module (LTE))](https://sakura.io/product/module_lte.html)
+* SCM-920-Alpha (Sakura Communication Module (LoRa) α)
 
 with
 
