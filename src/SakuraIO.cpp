@@ -449,3 +449,16 @@ uint8_t SakuraIO::getFirmwareUpdateStatus(){
 uint8_t SakuraIO::reset(){
   return executeCommand(CMD_SOFTWARE_RESET, 0, 0, NULL, NULL);
 }
+
+uint8_t SakuraIO::command_set_power_save_mode(uint8_t mode){
+  return executeCommand(CMD_SET_POWER_SAVE_MODE, 1, &mode, NULL, NULL);
+}
+
+uint8_t SakuraIO::command_get_power_save_mode(){
+  uint8_t response[1] = {0x00};
+  uint8_t responseLength = 1;
+  if(executeCommand(CMD_GET_POWER_SAVE_MODE, 0, 0, &responseLength, response) != CMD_ERROR_NONE){
+      return 0xff;
+  }
+  return response[0];
+}

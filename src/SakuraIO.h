@@ -77,6 +77,8 @@ public:
   uint8_t updateFirmware();
   uint8_t getFirmwareUpdateStatus();
   uint8_t reset();
+  uint8_t command_set_power_save_mode(uint8_t mode);
+  uint8_t command_get_power_save_mode();
 };
 
 class SakuraIO_SPI : public SakuraIO
