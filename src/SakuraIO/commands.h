@@ -37,6 +37,13 @@
 #define CMD_GET_UPDATE_FIRMWARE_STATUS       0xAA  // OK
 #define CMD_SOFTWARE_RESET        0xAF  // OK
 
+// Power Save
+#define CMD_SET_POWER_SAVE_MODE         0xB0
+#define CMD_GET_POWER_SAVE_MODE         0xB1
+
+#define POWER_SAVE_MODE_DISABLE         0x00
+#define POWER_SAVE_MODE_AUTO_SLEEP      0x01
+#define POWER_SAVE_MODE_RF_OFF          0x02
 
 // Response
 #define CMD_ERROR_NONE             0x01
