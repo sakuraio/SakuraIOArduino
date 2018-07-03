@@ -48,7 +48,7 @@ SakuraIO_SPI::SakuraIO_SPI(int _cs){
   cs = _cs;
   SPI.begin();
 #if SPI_HAS_TRANSACTION
-  settings = SPISettings(4000000, MSBFIRST, SPI_MODE0); // 4MHz, MSB First, SPI mode 0
+  settings = SPISettings(350000, MSBFIRST, SPI_MODE0); // 350kHz, MSB First, SPI mode 0
 #endif
   pinMode(cs, OUTPUT);
   digitalWrite(cs, HIGH);
