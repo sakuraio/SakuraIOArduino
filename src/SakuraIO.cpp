@@ -164,6 +164,18 @@ uint8_t SakuraIO::enqueueTx(uint8_t ch, float value, uint64_t offset){
 }
 
 uint8_t SakuraIO::enqueueTx(uint8_t ch, double value, uint64_t offset){
+
+  // check sizeof(double)
+  //
+  // On the Uno and other ATMEGA based boards,
+  // this occupies 4 bytes. That is, the double
+  // implementation is exactly the same as the float,
+  // with no gain in precision.
+  // https://www.arduino.cc/reference/en/language/variables/data-types/double/
+  if (sizeof(double) == 4){
+    return enqueueTx(ch, (float)value, offset);
+  }
+
   return enqueueTxRaw(ch, 'd', 8, (uint8_t *)&value, offset);
 }
 
