@@ -167,7 +167,9 @@ Please see example code.
 * [Shell](./examples/Shell/Shell.ino)
 * [Send illminance (CdS)](./examples/CdS/CdS.ino)
 
+# Notes
 
+* On the Uno and other ATMEGA based boards, Values ​​of type double are sent as float type. (Please see [Arduino Reference]( https://www.arduino.cc/reference/en/language/variables/data-types/double/).)
 
 # License
 
