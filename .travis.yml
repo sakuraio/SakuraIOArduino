@@ -23,6 +23,7 @@ script:
   - arduino --verify --board arduino:avr:uno $PWD/examples/Shell/Shell.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/Standard/Standard.ino
   - arduino --verify --board arduino:avr:uno $PWD/examples/CdS/CdS.ino
+  - arduino --verify --board arduino:avr:uno $PWD/examples/double2float/double2float.ino
 notifications:
   email:
     on_success: change
