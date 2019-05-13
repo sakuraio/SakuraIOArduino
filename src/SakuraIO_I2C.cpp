@@ -19,7 +19,7 @@ void SakuraIO_I2C::end(){
       Wire.endTransmission();
       break;
     case MODE_READ:
-      Wire.requestFrom(SAKURAIO_SLAVE_ADDR, 1, true);
+      Wire.requestFrom((uint8_t)SAKURAIO_SLAVE_ADDR, (uint8_t)1, (uint8_t)true);
       if( Wire.available() ) Wire.read();
       break;
   }
