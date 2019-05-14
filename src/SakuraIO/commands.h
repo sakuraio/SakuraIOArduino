@@ -54,6 +54,9 @@
 #define CMD_ERROR_LOCKED           0x06
 #define CMD_ERROR_BUSY             0x07
 
+#define CMD_LIB_ERROR_COMMUNICATION    0x7f
+#define CMD_LIB_ERROR_INVALID_LENGTH   0x41
+
 
 // FileStatus
 #define FILE_STATUS_ERROR 0x01

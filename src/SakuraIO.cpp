@@ -76,7 +76,7 @@ uint8_t SakuraIO::getConnectionStatus(){
   uint8_t responseLength = 1;
   uint8_t response[1] = {0x00};
   if(executeCommand(CMD_GET_CONNECTION_STATUS, 0, NULL, &responseLength, response) != CMD_ERROR_NONE){
-    return 0x7F;
+    return CMD_LIB_ERROR_COMMUNICATION;
   }
   return response[0];
 }
@@ -86,6 +86,11 @@ uint8_t SakuraIO::getSignalQuality(){
   uint8_t response[1] = {0x00};
 
   if(executeCommand(CMD_GET_SIGNAL_QUALITY, 0, NULL, &responseLength, response) != CMD_ERROR_NONE){
+
+    if(responseLength<1){
+      return CMD_LIB_ERROR_INVALID_LENGTH;
+    }
+
     return 0x00;
   }
   return response[0];
@@ -100,6 +105,11 @@ uint64_t SakuraIO::getUnixtime(){
   uint8_t responseLength = 8;
   uint8_t response[8] = {0x00};
   if(executeCommand(CMD_GET_DATETIME, 0, NULL, &responseLength, response) != CMD_ERROR_NONE){
+
+    if(responseLength<8){
+      return CMD_LIB_ERROR_INVALID_LENGTH;
+    }
+
     return 0x00;
   }
   return *((uint64_t *)response);
@@ -292,6 +302,11 @@ uint8_t SakuraIO::getTxQueueLength(uint8_t *available, uint8_t *queued){
   uint8_t ret = executeCommand(CMD_TX_LENGTH, 0, NULL, &responseLength, response);
   *available = response[0];
   *queued = response[1];
+
+  if(responseLength<2){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   return ret;
 }
 
@@ -309,6 +324,11 @@ uint8_t SakuraIO::getTxStatus(uint8_t *queue, uint8_t *immediate){
   uint8_t ret = executeCommand(CMD_TX_STAT, 0, NULL, &responseLength, response);
   *queue = response[0];
   *immediate = response[1];
+
+  if(responseLength<2){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   return ret;
 }
 
@@ -320,6 +340,10 @@ uint8_t SakuraIO::dequeueRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t 
   uint8_t ret = executeCommand(CMD_RX_DEQUEUE, 0, NULL, &responseLength, response);
   if(ret != CMD_ERROR_NONE){
     return ret;
+  }
+
+  if(responseLength<18){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
   }
 
   *ch = response[0];
@@ -342,6 +366,10 @@ uint8_t SakuraIO::peekRx(uint8_t *ch, uint8_t *type, uint8_t *value, int64_t *of
     return ret;
   }
 
+  if(responseLength<18){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   *ch = response[0];
   *type = response[1];
   for(uint8_t i=0; i<8; i++){
@@ -358,6 +386,11 @@ uint8_t SakuraIO::getRxQueueLength(uint8_t *available, uint8_t *queued){
   uint8_t response[2] = {0x00};
   uint8_t responseLength = 2;
   uint8_t ret = executeCommand(CMD_RX_LENGTH, 0, NULL, &responseLength, response);
+
+  if(responseLength<2){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   *available = response[0];
   *queued = response[1];
   return ret;
@@ -380,6 +413,11 @@ uint8_t SakuraIO::getFileMetaData(uint8_t *status, uint32_t *totalSize, uint64_t
   uint8_t response[17] = {0x00};
   uint8_t responseLength = 17;
   uint8_t ret = executeCommand(CMD_GET_FILE_METADATA, 0, NULL, &responseLength, response);
+
+  if(responseLength<17){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   *status = response[0];
   *totalSize = *(uint32_t *)(response+1);
   *timestamp = *(uint64_t *)(response+5);
@@ -391,6 +429,11 @@ uint8_t SakuraIO::getFileDownloadStatus(uint8_t *status, uint32_t *currentSize){
   uint8_t response[5] = {0x00};
   uint8_t responseLength = 5;
   uint8_t ret = executeCommand(CMD_GET_FILE_DOWNLOAD_STATUS, 0, NULL, &responseLength, response);
+
+  if(responseLength<5){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   *status = response[0];
   *currentSize = *(uint32_t *)(response+1);
   return ret;
@@ -419,6 +462,11 @@ uint8_t SakuraIO::getUniqueID(char *data){
   if(ret != CMD_ERROR_NONE){
     return ret;
   }
+
+  if(responseLength<10){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   for(uint8_t i=0; i<responseLength; i++){
     data[i] = (char)response[i];
   }
@@ -433,6 +481,11 @@ uint8_t SakuraIO::getFirmwareVersion(char *data){
   if(ret != CMD_ERROR_NONE){
     return ret;
   }
+
+  if(responseLength<1){
+    return CMD_LIB_ERROR_INVALID_LENGTH;
+  }
+
   for(uint8_t i=0; i<responseLength; i++){
     data[i] = (char)response[i];
   }
