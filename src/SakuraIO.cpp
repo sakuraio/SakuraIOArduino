@@ -23,7 +23,7 @@ uint8_t SakuraIO::executeCommand(uint8_t cmd,uint8_t requestLength, uint8_t *req
     this->sendByte(request[i]);
   }
   this->sendByte(parity);
-  //this->finishSending();
+  this->finishSending();
 
   reservedResponseLength = 0;
   if(responseLength != NULL){
