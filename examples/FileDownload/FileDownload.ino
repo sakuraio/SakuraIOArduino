@@ -1,3 +1,11 @@
+/*
+ * sakura.io file distrobution (file download) example
+ *
+ * For detailed command information please see the datasheet.
+ * https://sakura.io/developer/pdf/sakura_module_datasheet_latest.pdf
+ */
+
+
 #include <SakuraIO.h>
 
 #define FILE_ID     1

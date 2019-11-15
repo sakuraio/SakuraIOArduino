@@ -1,3 +1,10 @@
+/*
+ * sakura.io shell example
+ *
+ * For detailed command information please see the datasheet.
+ * https://sakura.io/developer/pdf/sakura_module_datasheet_latest.pdf
+ */
+
 #include <SakuraIO.h>
 #include "ntshell.h"
 #include "commands.h"

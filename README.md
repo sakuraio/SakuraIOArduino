@@ -87,6 +87,8 @@ void loop() {
 
 ## Methods
 
+Please check the [datasheet](https://sakura.io/developer/pdf/sakura_module_datasheet_latest.pdf) to see what each method is actually doing.
+
 ```cpp
 // Common
 uint8_t getConnectionStatus();
