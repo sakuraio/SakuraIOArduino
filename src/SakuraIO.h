@@ -10,7 +10,7 @@ protected:
   virtual void end(){}
 
   virtual void sendByte(uint8_t data){}
-  //virtual void finishSending(){}
+  virtual void finishSending(){}
 
   virtual uint8_t startReceive(uint8_t length){return length;};
   virtual uint8_t receiveByte(){return 0x00;}
@@ -100,6 +100,7 @@ protected:
   void begin();
   void end();
   void sendByte(uint8_t data);
+  void finishSending();
   uint8_t startReceive(uint8_t length);
   uint8_t receiveByte(bool stop);
   uint8_t receiveByte();
