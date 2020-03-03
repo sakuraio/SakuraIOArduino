@@ -37,9 +37,12 @@ uint8_t updateFirmware(){
     case 0x0002:
       Serial.println("SCM-LTE-01");
       break;
+    case 0x0003:
+      Serial.println("SCM-LTE-01 Rev.B");
+      break;
     default:
-      Serial.println("Please check connection");
-      return 1;
+      Serial.println("Unknown Product ID");
+      break;
   }
 
   delay(1000);
